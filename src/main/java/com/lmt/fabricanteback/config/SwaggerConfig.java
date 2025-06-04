@@ -11,8 +11,9 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-            .info(new Info().title("API Exemplo")
-            .version("1.0")
-            .description("Documentação da API usando Swagger"));
+            .info(new Info()
+                .title("API Exemplo")
+                .version("1.0")
+                .description("Documentação da API usando OpenAPI 3"));
     }
-}
+}	
