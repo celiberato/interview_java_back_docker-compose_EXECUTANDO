@@ -1,14 +1,14 @@
 server:
-  port: 8080
+  port: 9080
   servlet:
-    context-path: /fabricante-back
+    context-path: /interview
 
 spring:
   application:
-    name: 'fabricante-back'
+    name: 'interview'
   data:
     mongodb:
-      database: fabricante-back
+      database: interview
       port: 27017
       host: localhost
 

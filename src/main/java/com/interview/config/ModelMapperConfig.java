@@ -1,4 +1,4 @@
-package com.lmt.fabricanteback.config;
+package com.interview.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

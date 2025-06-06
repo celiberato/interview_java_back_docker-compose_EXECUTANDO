@@ -1,4 +1,4 @@
-package com.lmt.fabricanteback.config;
+package com.interview.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,6 @@
-package com.lmt.fabricanteback.product.entity;
+package com.interview.entity;
+
+import com.interview.enumeration.StatusEnum;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,24 +10,33 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "product", catalog = "testdb")
-public class Product {
+@Table(name = "cliente", catalog = "testdb")
+public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String nome;
+    private String email;
+    private StatusEnum status;
 
     
-    public Product(Long id, String nome) {
+    public Cliente(Long id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.email = email;
+		
 	}
 
-	public Product() {
+    public Cliente(String nome, String email) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.nome = nome;
+		this.email = email;
+	}
+
+	public Cliente() {
+		super();
 	}
 
 	// Getters e Setters
@@ -44,4 +55,23 @@ public class Product {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public StatusEnum getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusEnum status) {
+		this.status = status;
+	}
+    
+	
+    
 }

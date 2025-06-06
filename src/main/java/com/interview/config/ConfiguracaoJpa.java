@@ -1,4 +1,4 @@
-package com.lmt.fabricanteback.config;
+package com.interview.config;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;

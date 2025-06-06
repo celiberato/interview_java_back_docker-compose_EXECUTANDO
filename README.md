@@ -183,7 +183,7 @@ O Pacote de Objetos de Negócios inclui classes de entidade para as seguntes ent
         - controller
         - domain converter
         - domain document
-        - domain dto
+        - domain Request
         - domain vo
         - domain
         - exception

@@ -1,4 +1,4 @@
-package com.lmt.fabricanteback.product.controller;
+package com.interview.cliente.controller.loadDatabase;
 
 import java.util.List;
 
@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lmt.fabricanteback.product.entity.Product;
-import com.lmt.fabricanteback.product.model.ProductVO;
-import com.lmt.fabricanteback.product.service.ProductService;
-import com.lmt.fabricanteback.repository.ProductRepository;
+import com.interview.cliente.model.response.ClienteResponse;
+import com.interview.cliente.repository.ClienteRepository;
+import com.interview.cliente.usecase.ClienteService;
+import com.interview.cliente.utils.mapper.ClienteMapper;
+import com.interview.entity.Cliente;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,26 +23,26 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Produtos", description = "Operações relacionadas a produtos")
 public class LoadDatabaseController {
 
-	ProductMapper mapper = new ProductMapper();
+	ClienteMapper mapper = new ClienteMapper();
 
 	@Autowired
-	private ProductRepository repository;
+	private ClienteRepository repository;
 
 	@Autowired
-	private ProductService service;
+	private ClienteService service;
 
 	@GetMapping("/all")
 	@Operation(summary = "Busca um produto pelo ID", description = "Retorna um produto específico pelo ID")
-	public ResponseEntity<List<ProductVO>> loadData() {
-		repository.save(new Product(null, "JOSÉ"));
-		repository.save(new Product(null, "MARELO"));
-		repository.save(new Product(null, "RICARDO"));
-		repository.save(new Product(null, "DANIEL"));
-		repository.save(new Product(null, "RFAEL"));
+	public ResponseEntity<List<ClienteResponse>> loadData() {
+		repository.save(new Cliente(null, "JOSÉ"));
+		repository.save(new Cliente(null, "MARELO"));
+		repository.save(new Cliente(null, "RICARDO"));
+		repository.save(new Cliente(null, "DANIEL"));
+		repository.save(new Cliente(null, "RFAEL"));
 		
 		return ResponseEntity.status(HttpStatus.OK).body(
-				mapper.toVOList(
-						service.listAll()));
+				mapper.toListaResponse(
+						service.listarTodosClientes()));
 
 	}
 
