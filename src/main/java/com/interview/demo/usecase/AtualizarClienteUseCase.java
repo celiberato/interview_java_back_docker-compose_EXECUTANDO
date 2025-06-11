@@ -1,11 +1,9 @@
-package com.interview.cliente.usecase;
+package com.interview.demo.usecase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.interview.cliente.model.request.ClienteRequest;
-import com.interview.cliente.model.response.ClienteResponse;
-import com.interview.cliente.repository.ClienteRepository;
-import com.interview.entity.Cliente;
+import com.interview.demo.entity.Cliente;
+import com.interview.demo.repository.ClienteRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -20,12 +18,12 @@ public class AtualizarClienteUseCase {
     }
 
 	@Transactional
-    public ClienteResponse execute(ClienteRequest request) {
+    public Cliente execute(Cliente request) {
         Cliente cliente = new Cliente(request.getNome(), request.getEmail());
         
         repository.save(cliente);
         
-        return new ClienteResponse(
+        return new Cliente(
         		cliente.getId(), 
         		cliente.getNome(), 
         		cliente.getEmail());

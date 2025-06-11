@@ -1,4 +1,4 @@
-package com.interview.cliente.model.response;
+package com.interview.demo.model.response;
 
 public class ClienteResponse {
 

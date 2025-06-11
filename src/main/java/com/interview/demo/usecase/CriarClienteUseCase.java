@@ -1,24 +1,18 @@
-package com.interview.cliente.usecase;
+package com.interview.demo.usecase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.interview.cliente.model.request.ClienteRequest;
-import com.interview.cliente.model.response.ClienteResponse;
-import com.interview.cliente.repository.ClienteRepository;
-import com.interview.entity.Cliente;
-import com.interview.enumeration.StatusEnum;
+import com.interview.demo.entity.Cliente;
+import com.interview.demo.enumeration.StatusEnum;
+import com.interview.demo.model.response.ClienteResponse;
+import com.interview.demo.repository.ClienteRepository;
 
 public class CriarClienteUseCase {
 	
 	@Autowired
 	private ClienteRepository repository;
 
-
-    public CriarClienteUseCase(ClienteRepository repository) {
-        this.repository = repository;
-    }
-
-    public ClienteResponse execute(ClienteRequest request) {
+    public ClienteResponse execute(Cliente request) {
         Cliente cliente = new Cliente(request.getNome(), request.getEmail());
         
         cliente.setStatus(StatusEnum.CRIADO);

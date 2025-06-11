@@ -1,4 +1,4 @@
-package com.interview.cliente.controller.loadDatabase;
+package com.interview.demo.controller.loadDatabase;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.interview.cliente.model.response.ClienteResponse;
-import com.interview.cliente.repository.ClienteRepository;
-import com.interview.cliente.usecase.ClienteService;
-import com.interview.cliente.utils.mapper.ClienteMapper;
-import com.interview.entity.Cliente;
+import com.interview.demo.entity.Cliente;
+import com.interview.demo.model.response.ClienteResponse;
+import com.interview.demo.repository.ClienteRepository;
+import com.interview.demo.usecase.ListarClientesUseCase;
+import com.interview.demo.utils.mapper.ClienteMapper;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,7 +29,7 @@ public class LoadDatabaseController {
 	private ClienteRepository repository;
 
 	@Autowired
-	private ClienteService service;
+	private ListarClientesUseCase listarClientes;
 
 	@GetMapping("/all")
 	@Operation(summary = "Busca um produto pelo ID", description = "Retorna um produto específico pelo ID")
@@ -42,7 +42,7 @@ public class LoadDatabaseController {
 		
 		return ResponseEntity.status(HttpStatus.OK).body(
 				mapper.toListaResponse(
-						service.listarTodosClientes()));
+						listarClientes.execute()));
 
 	}
 

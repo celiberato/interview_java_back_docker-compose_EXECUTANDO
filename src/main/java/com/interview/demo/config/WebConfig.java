@@ -1,4 +1,4 @@
-package com.interview.config;
+package com.interview.demo.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

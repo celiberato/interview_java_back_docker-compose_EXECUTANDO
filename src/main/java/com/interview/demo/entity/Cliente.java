@@ -1,12 +1,11 @@
-package com.interview.entity;
+package com.interview.demo.entity;
 
-import com.interview.enumeration.StatusEnum;
+import com.interview.demo.enumeration.StatusEnum;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,7 +20,7 @@ public class Cliente {
     private StatusEnum status;
 
     
-    public Cliente(Long id, String nome) {
+    public Cliente(long id, String nome, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;

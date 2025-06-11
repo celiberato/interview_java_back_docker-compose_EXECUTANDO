@@ -1,14 +1,14 @@
-package com.interview.cliente;
+package com.interview.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
-public class FabricanteBackApplication {
+public class InterviewApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FabricanteBackApplication.class, args);
+		SpringApplication.run(InterviewApplication.class, args);
 	}
 
 };

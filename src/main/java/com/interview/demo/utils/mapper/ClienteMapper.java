@@ -1,13 +1,13 @@
-package com.interview.cliente.utils.mapper;
+package com.interview.demo.utils.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
 
-import com.interview.cliente.model.request.ClienteRequest;
-import com.interview.cliente.model.response.ClienteResponse;
-import com.interview.entity.Cliente;
+import com.interview.demo.entity.Cliente;
+import com.interview.demo.model.request.ClienteRequest;
+import com.interview.demo.model.response.ClienteResponse;
 
 
 public class ClienteMapper {

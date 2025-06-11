@@ -1,8 +1,8 @@
-package com.interview.cliente.usecase;
+package com.interview.demo.usecase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.interview.cliente.repository.ClienteRepository;
+import com.interview.demo.repository.ClienteRepository;
 
 import jakarta.transaction.Transactional;
 

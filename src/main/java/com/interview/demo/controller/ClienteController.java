@@ -1,4 +1,4 @@
-package com.interview.cliente.controller;
+package com.interview.demo.controller;
 
 import java.util.List;
 
@@ -15,33 +15,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.interview.cliente.model.request.ClienteRequest;
-import com.interview.cliente.model.response.ClienteResponse;
-import com.interview.cliente.repository.ClienteRepository;
-import com.interview.cliente.usecase.CriarClienteUseCase;
-import com.interview.cliente.utils.mapper.ClienteMapper;
+import com.interview.demo.model.request.ClienteRequest;
+import com.interview.demo.model.response.ClienteResponse;
+import com.interview.demo.repository.ClienteRepository;
+import com.interview.demo.usecase.ApagarClienteUseCase;
+import com.interview.demo.usecase.AtualizarClienteUseCase;
+import com.interview.demo.usecase.ConsultarClienteUseCase;
+import com.interview.demo.usecase.CriarClienteUseCase;
+import com.interview.demo.usecase.ListarClientesUseCase;
+import com.interview.demo.utils.mapper.ClienteMapper;
 
 
 @RestController
-@RequestMapping(value = {"/cliente"})
+@RequestMapping(value = {"/demo"})
 public class ClienteController {
 
 	ClienteMapper mapper = new ClienteMapper();
 
-	@Autowired
+
 	private CriarClienteUseCase criarCliente;
-	
-	@Autowired
 	private ListarClientesUseCase listarClientes;
-
-	@Autowired
-	private ConsultarClientesUseCase consutarCliente;
-
-	@Autowired
-	private AtualizarClienteUseCase atualizarClentes;
-
-	@Autowired
+	private ConsultarClienteUseCase consultarCliente;
+	private AtualizarClienteUseCase atualizarCliente;
 	private ApagarClienteUseCase apagarCliente;
+
+	public ClienteController(CriarClienteUseCase criarCliente, ListarClientesUseCase listarClientes,
+			ConsultarClienteUseCase consultarCliente, AtualizarClienteUseCase atualizarCliente,
+			ApagarClienteUseCase apagarCliente) {
+		super();
+		this.criarCliente = criarCliente;
+		this.listarClientes = listarClientes;
+		this.consultarCliente = consultarCliente;
+		this.atualizarCliente = atualizarCliente;
+		this.apagarCliente = apagarCliente;
+	}
 	
 	@Autowired
 	private ClienteRepository repository;
@@ -49,22 +56,21 @@ public class ClienteController {
 	@PostMapping("criar")
 	public ResponseEntity<ClienteResponse> criarCliente(@RequestBody @Validated ClienteRequest clienteRequest) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(
-				mapper.toClienteResponse(
-						criarCliente.save(
-								mapper.toCliente(clienteRequest))));
+			criarCliente.execute(
+					mapper.toCliente(clienteRequest)));
 	}
 
 	@GetMapping("/todos")
 	public ResponseEntity<List<ClienteResponse>> listarTodosClientes() {
 		return ResponseEntity.status(HttpStatus.OK).body(
 				mapper.toListaResponse(
-						listarClientes.listarTodosClientes()));
+						listarClientes.execute()));
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<ClienteResponse> getById(@PathVariable Long id) {
 		return ResponseEntity.status(HttpStatus.OK).body(
-				mapper.toClienteResponse(consultarCliente.obteobterClientePorId(id))
+				mapper.toClienteResponse(consultarCliente.execute(id))
 		);
 	}
 
@@ -72,13 +78,13 @@ public class ClienteController {
 	public ResponseEntity<ClienteResponse> atualizarCliente(@RequestBody @Validated ClienteRequest clienteRequest) {
 		return ResponseEntity.status(HttpStatus.OK).body(
 				mapper.toClienteResponse(
-					atualiarCliente.salvar(mapper.toCliente(clienteRequest)))
+					atualizarCliente.execute(mapper.toCliente(clienteRequest)))
 		);
 	}
 
 	@DeleteMapping("/{id}")
 	public void apagarCliente(@PathVariable Long id) {
-		apagarCliente.apagar(id);
+		apagarCliente.execute(id);
 	}
 
 }

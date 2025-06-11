@@ -1,4 +1,4 @@
-package com.interview.cliente.model.request;
+package com.interview.demo.model.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
