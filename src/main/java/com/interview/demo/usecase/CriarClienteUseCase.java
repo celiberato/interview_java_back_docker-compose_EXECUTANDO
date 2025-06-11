@@ -1,12 +1,14 @@
 package com.interview.demo.usecase;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.interview.demo.entity.Cliente;
 import com.interview.demo.enumeration.StatusEnum;
 import com.interview.demo.model.response.ClienteResponse;
 import com.interview.demo.repository.ClienteRepository;
 
+@Service
 public class CriarClienteUseCase {
 	
 	@Autowired

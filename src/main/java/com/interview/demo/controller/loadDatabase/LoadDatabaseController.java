@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping(value = {"/load"})
+@RequestMapping(value = {"/carregar"})
 @Tag(name = "Produtos", description = "Operações relacionadas a produtos")
 public class LoadDatabaseController {
 
@@ -27,11 +27,11 @@ public class LoadDatabaseController {
 
 	@Autowired
 	private ClienteRepository repository;
-
 	@Autowired
 	private ListarClientesUseCase listarClientes;
 
-	@GetMapping("/all")
+	
+	@GetMapping("/todos")
 	@Operation(summary = "Busca um produto pelo ID", description = "Retorna um produto específico pelo ID")
 	public ResponseEntity<List<ClienteResponse>> loadData() {
 		repository.save(new Cliente(null, "JOSÉ"));

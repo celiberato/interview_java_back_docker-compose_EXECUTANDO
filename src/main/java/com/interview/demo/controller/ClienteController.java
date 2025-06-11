@@ -21,9 +21,10 @@ import com.interview.demo.repository.ClienteRepository;
 import com.interview.demo.usecase.ApagarClienteUseCase;
 import com.interview.demo.usecase.AtualizarClienteUseCase;
 import com.interview.demo.usecase.ConsultarClienteUseCase;
-import com.interview.demo.usecase.CriarClienteUseCase;
 import com.interview.demo.usecase.ListarClientesUseCase;
+import com.interview.demo.usecase.CriarClienteUseCase;
 import com.interview.demo.utils.mapper.ClienteMapper;
+
 
 
 @RestController
@@ -33,27 +34,21 @@ public class ClienteController {
 	ClienteMapper mapper = new ClienteMapper();
 
 
+	@Autowired(required = true)
 	private CriarClienteUseCase criarCliente;
+	@Autowired
 	private ListarClientesUseCase listarClientes;
+	@Autowired
 	private ConsultarClienteUseCase consultarCliente;
+	@Autowired
 	private AtualizarClienteUseCase atualizarCliente;
+	@Autowired
 	private ApagarClienteUseCase apagarCliente;
 
-	public ClienteController(CriarClienteUseCase criarCliente, ListarClientesUseCase listarClientes,
-			ConsultarClienteUseCase consultarCliente, AtualizarClienteUseCase atualizarCliente,
-			ApagarClienteUseCase apagarCliente) {
-		super();
-		this.criarCliente = criarCliente;
-		this.listarClientes = listarClientes;
-		this.consultarCliente = consultarCliente;
-		this.atualizarCliente = atualizarCliente;
-		this.apagarCliente = apagarCliente;
-	}
-	
 	@Autowired
 	private ClienteRepository repository;
 
-	@PostMapping("criar")
+	@PostMapping("/criar")
 	public ResponseEntity<ClienteResponse> criarCliente(@RequestBody @Validated ClienteRequest clienteRequest) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(
 			criarCliente.execute(
